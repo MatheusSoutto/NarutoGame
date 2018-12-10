@@ -2,19 +2,20 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Naruto here.
+ * Write a description of class Player here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
 public abstract class Player extends Actor
 {
-    Integer step = 6;
-    double dy = 0;
-    int maxDy = 320;
-    double g = 8;
+    int dy = 0;
+    int g = 8;
+    int MAXDY = 320;
+    int BOOST_SPEED = -35;
     int jumpRatio = 0;
     int jumpLimit = 12;
+    Integer step = 6;
     String caminhoImg;
     /**
      * Act - do whatever the Naruto wants to do. This method is called whenever
@@ -24,8 +25,8 @@ public abstract class Player extends Actor
     {
         // Add your action code here.
         
-        if((getY() + dy) > maxDy)
-            setLocation(getX(),maxDy);
+        if((getY() + dy) > MAXDY)
+            setLocation(getX(),MAXDY);
         else
         {
             setLocation(getX(), (int)(getY() + dy));
@@ -34,15 +35,15 @@ public abstract class Player extends Actor
         }
         
         // If user presses SPACE, Naruto jumps
-        if(Greenfoot.isKeyDown("space") == true && getY() == maxDy && jumpRatio == 0)
+        if(Greenfoot.isKeyDown("space") == true && getY() == MAXDY && jumpRatio == 0)
         {
             jumpRatio = 1;
-            dy = -35;
+            dy = BOOST_SPEED;
             setLocation(getX(), (int)(getY() + dy));
             dy += g;
             jump();
         }
-        if(getY() < maxDy)
+        if(getY() < MAXDY)
         {
             jump();
         }
