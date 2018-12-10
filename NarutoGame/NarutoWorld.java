@@ -10,7 +10,7 @@ public class NarutoWorld extends World
 {
     int time = 0;
     private int imageCount = 0;
- 
+    private Pontuacao pontos;
     private GreenfootImage bgImage = new GreenfootImage("images/world/background1.jpg");
     
     int maxDy = 320;
@@ -31,11 +31,22 @@ public class NarutoWorld extends World
         
         //Add Naruto to the world
         addObject(naruto, 100, getHeight()/2);
+        
+        pontos = new Pontuacao();
+        addObject(pontos,getWidth()/2,15);
     }
-     
+    
+    
+    
+    public void pontua()
+    {
+        pontos.addScore();
+        pontos.getScore();
+    }
+    
     public void act() {
         imageCount -= 20; //(or any other value; small -> slow moving, big -> fast movement)
-        drawBackgroundImage();
+        drawBackgroundImage();                
         
         if(time > 50)
         {

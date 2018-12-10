@@ -56,7 +56,10 @@ public abstract class Player extends Actor
             jumpRatio++;
         
         if (jumpRatio == jumpLimit)
-            jumpRatio = 0; 
+            jumpRatio = 0;
+        
+        NarutoWorld world = (NarutoWorld)getWorld();    
+        world.pontua();
     }
     
     public void run()
