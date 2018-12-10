@@ -1,5 +1,5 @@
-
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.*;
 
 /**
  * Write a description of class Player here.
@@ -89,6 +89,15 @@ public abstract class Player extends Actor
                 setImage("naruto/jumping/n3.png");
             else
                 setImage("naruto/jumping/n4.png");
+        }
+    }
+    
+    public void isDead()
+    {
+        List lista = getWorld().getObjectsAt(getX(), getY(), Obstacle.class);
+        if(!lista.isEmpty())
+        {
+            Greenfoot.stop();
         }
     }
     
