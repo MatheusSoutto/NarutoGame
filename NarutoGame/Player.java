@@ -13,6 +13,8 @@ public abstract class Player extends Actor
     double dy = 0;
     int maxDy = 320;
     double g = 8;
+    int jumpRatio = 0;
+    int jumpLimit = 12;
     String caminhoImg;
     /**
      * Act - do whatever the Naruto wants to do. This method is called whenever
@@ -32,8 +34,9 @@ public abstract class Player extends Actor
         }
         
         // If user presses SPACE, Naruto jumps
-        if(Greenfoot.isKeyDown("space") == true && getY() == maxDy)
+        if(Greenfoot.isKeyDown("space") == true && getY() == maxDy && jumpRatio == 0)
         {
+            jumpRatio = 1;
             dy = -35;
             setLocation(getX(), (int)(getY() + dy));
             dy += g;
@@ -47,6 +50,12 @@ public abstract class Player extends Actor
         {
             run();
         }
+        
+        if (jumpRatio >= 1)
+            jumpRatio++;
+        
+        if (jumpRatio == jumpLimit)
+            jumpRatio = 0; 
     }
     
     public void run()
