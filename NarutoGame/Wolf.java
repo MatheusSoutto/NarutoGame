@@ -19,7 +19,7 @@ public class Wolf extends Obstacle
         // Add your action code here.
         setLocation(getX() - 20, getY());
         run();
-        if(getX() <= 0)
+        if(this.isAtEdge())
         {
             getWorld().removeObject(this);
         }

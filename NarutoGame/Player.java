@@ -94,10 +94,10 @@ public abstract class Player extends Actor
     
     public void isDead()
     {
-        List lista = getWorld().getObjectsAt(getX(), getY(), Obstacle.class);
-        if(!lista.isEmpty())
+        if(this.isTouching(Obstacle.class))
         {
             GameOver gameOver = new GameOver();
+            getWorld().addObject(gameOver, (getWorld().getWidth()/2), (getWorld().getHeight()/2));
             Greenfoot.stop();
         }
     }
