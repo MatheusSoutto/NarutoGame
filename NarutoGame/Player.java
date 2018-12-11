@@ -1,5 +1,5 @@
-
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.*;
 
 /**
  * Write a description of class Player here.
@@ -23,7 +23,7 @@ public abstract class Player extends Actor
      */
     public void act() 
     {
-        // Add your action code here.
+        isDead();
         
         if((getY() + dy) > MAXDY)
             setLocation(getX(),MAXDY);
@@ -92,6 +92,16 @@ public abstract class Player extends Actor
                 setImage("naruto/jumping/n3.png");
             else
                 setImage("naruto/jumping/n4.png");
+        }
+    }
+    
+    public void isDead()
+    {
+        if(this.isTouching(Obstacle.class))
+        {
+            GameOver gameOver = new GameOver();
+            getWorld().addObject(gameOver, (getWorld().getWidth()/2), (getWorld().getHeight()/2));
+            Greenfoot.stop();
         }
     }
     
