@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.*;
 
 /**
  * Write a description of class NarutoWorld here.
@@ -12,8 +13,7 @@ public class NarutoWorld extends World
     private int imageCount = 0;
     private Pontuacao pontos;
     private GreenfootImage bgImage = new GreenfootImage("images/world/background1.jpg");
-    
-    int maxDy = 320;
+    int ground = 320;
     
     /**
      * Constructor for objects of class NarutoWorld.
@@ -24,13 +24,15 @@ public class NarutoWorld extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1); 
         
-        Greenfoot.setSpeed(36);
+        Greenfoot.setSpeed(37);
         
         //Create Naruto
         Naruto naruto = new Naruto();
         
         //Add Naruto to the world
         addObject(naruto, 100, getHeight()/2);
+        
+        ground += naruto.groundHeight;
         
         pontos = new Pontuacao();
         addObject(pontos,getWidth()/2,15);
@@ -51,7 +53,8 @@ public class NarutoWorld extends World
         if(time > 50)
         {
             Wolf wolf = new Wolf();
-            addObject(wolf, getWidth(), maxDy);
+            int wolfHeight = wolf.getImage().getHeight()/2;
+            addObject(wolf, getWidth(), ground - wolfHeight);
             time = 0;
         }
         time++;

@@ -15,6 +15,8 @@ public abstract class Player extends Actor
     int BOOST_SPEED = -35;
     int jumpRatio = 0;
     int jumpLimit = 12;
+    int groundHeight = getImage().getHeight()/2;
+    int sideWidth = getImage().getWidth()/2;
     Integer step = 6;
     String caminhoImg;
     /**
@@ -97,12 +99,37 @@ public abstract class Player extends Actor
     
     public void isDead()
     {
-        if(this.isTouching(Obstacle.class))
+        int limitX = (getX() + sideWidth);
+        int limitY = (getY() + groundHeight);
+        //int limitY = getY();
+        List<Obstacle> list = getWorld().getObjects(Obstacle.class);
+        for(Obstacle o : list)
         {
+            int collisorXi = (o.getX() - o.getImage().getWidth()/2);
+            int collisorXj = (o.getX() + o.getImage().getWidth()/2);
+            int collisorYi = (o.getY() - o.getImage().getHeight()/2);
+            int collisorYj = (o.getY() + o.getImage().getHeight()/2);
+            if(limitX >= collisorXi && limitX <= collisorXj)
+            {
+                if(limitY >= collisorYi && limitY <= collisorYj)
+                {
+                    Greenfoot.stop();
+                    GameOver gameOver = new GameOver();
+                    getWorld().addObject(gameOver, (getWorld().getWidth()/2), (getWorld().getHeight()/2));
+                }
+                
+            }
+            
+        }
+        /*
+        if(limitX == getWorld().getObjectsAt(_x_, _y_, _cls_))
+        {
+            this.getImage().getWidth()
             GameOver gameOver = new GameOver();
             getWorld().addObject(gameOver, (getWorld().getWidth()/2), (getWorld().getHeight()/2));
             Greenfoot.stop();
         }
+        */
     }
     
     public abstract void changeImg();
