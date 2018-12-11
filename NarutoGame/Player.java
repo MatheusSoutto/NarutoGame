@@ -23,7 +23,7 @@ public abstract class Player extends Actor
      */
     public void act() 
     {
-        // Add your action code here.
+        isDead();
         
         if((getY() + dy) > MAXDY)
             setLocation(getX(),MAXDY);
@@ -97,6 +97,7 @@ public abstract class Player extends Actor
         List lista = getWorld().getObjectsAt(getX(), getY(), Obstacle.class);
         if(!lista.isEmpty())
         {
+            GameOver gameOver = new GameOver();
             Greenfoot.stop();
         }
     }
