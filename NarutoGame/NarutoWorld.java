@@ -56,6 +56,14 @@ public class NarutoWorld extends World
             int wolfHeight = wolf.getImage().getHeight()/2;
             addObject(wolf, getWidth(), ground - wolfHeight);
             time = 0;
+        }                
+        
+        if(time > 80)
+        {
+            Orochimaru orochimaru = new Orochimaru();
+            int orochimaruHeight = orochimaru.getImage().getHeight()/2;
+            addObject(orochimaru, getWidth(), ground - orochimaruHeight);
+            time = 0;
         }
         time++;
     }

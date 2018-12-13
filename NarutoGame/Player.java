@@ -100,11 +100,24 @@ public abstract class Player extends Actor
     public void isDead()
     {
         int limitX = (getX() + sideWidth);
-        int limitY = (getY() + groundHeight);
-        //int limitY = getY();
-        List<Obstacle> list = getWorld().getObjects(Obstacle.class);
-        for(Obstacle o : list)
+        int headY = (getY() + groundHeight);
+        int footY = (getY() - groundHeight);
+        int radio;
+        List<Enemy> list = getWorld().getObjects(Enemy.class);
+        for(Enemy e : list)
         {
+            if(getY() < MAXDY)
+            {
+                limitX = getX();
+            }
+            if(e.isTouching(limitX, headY) || e.isTouching(limitX, footY))
+            {
+                Greenfoot.stop();
+                GameOver gameOver = new GameOver();
+                getWorld().addObject(gameOver, (getWorld().getWidth()/2), (getWorld().getHeight()/2));
+            }
+            
+            /*
             int collisorXi = (o.getX() - o.getImage().getWidth()/2);
             int collisorXj = (o.getX() + o.getImage().getWidth()/2);
             int collisorYi = (o.getY() - o.getImage().getHeight()/2);
@@ -118,9 +131,9 @@ public abstract class Player extends Actor
                     getWorld().addObject(gameOver, (getWorld().getWidth()/2), (getWorld().getHeight()/2));
                 }
                 
-            }
-            
+            */
         }
+        
         /*
         if(limitX == getWorld().getObjectsAt(_x_, _y_, _cls_))
         {

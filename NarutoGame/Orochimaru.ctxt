@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=Orochimaru
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Orochimaru\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=void\ act()
+comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ Orochimaru\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment2.params=
+comment2.target=void\ move()
+comment3.params=
+comment3.target=int\ halfHeight()
+comment4.params=
+comment4.target=int\ halfWidth()
+comment5.params=x\ y
+comment5.target=boolean\ isTouching(int,\ int)
+numComments=6
