@@ -77,6 +77,14 @@ public class NarutoWorld extends World
                 if(min > 15)
                     min-=1;                
             }
+        }                
+        
+        if(time > 80)
+        {
+            Orochimaru orochimaru = new Orochimaru();
+            int orochimaruHeight = orochimaru.getImage().getHeight()/2;
+            addObject(orochimaru, getWidth(), ground - orochimaruHeight);
+            time = 0;
         }
         nivel ++;
         time++;        
