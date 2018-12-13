@@ -145,7 +145,7 @@ public abstract class Player extends Actor
     }
     private void fire()
     {
-        KunaiT kunai = new KunaiT();
+        Kunai kunai = new Kunai();
         getWorld().addObject(kunai, getX(), getY());
         kunai.setRotation(getRotation());
         kunai.move(40.0);
