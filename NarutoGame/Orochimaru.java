@@ -46,13 +46,13 @@ public class Orochimaru extends Enemy
     @Override
     public int halfHeight()
     {
-        GreenfootImage image = new GreenfootImage(base + path + getStep().toString() + ".png");
+        GreenfootImage image = new GreenfootImage(path + getStep().toString() + ".png");
         return image.getHeight()/2;
     }
     @Override
     public int halfWidth()
     {
-        GreenfootImage image = new GreenfootImage(base + path + getStep().toString() + ".png");
+        GreenfootImage image = new GreenfootImage(path + getStep().toString() + ".png");
         return image.getWidth()/2;
     }
     

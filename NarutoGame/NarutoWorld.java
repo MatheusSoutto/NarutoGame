@@ -62,11 +62,18 @@ public class NarutoWorld extends World
         
         if(time > soltaLobos)
         {
-            Wolf wolf = new Wolf();
-            int wolfHeight = wolf.getImage().getHeight()/2;
-            addObject(wolf, getWidth(), ground - wolfHeight);
-            time = 0;
             Random aleatorio = new Random();
+            if(aleatorio.nextInt(10) > 1){
+                Wolf wolf = new Wolf();
+                int wolfHeight = wolf.getImage().getHeight()/2;
+                addObject(wolf, getWidth(), ground - wolfHeight);
+            }else{
+                Orochimaru orochimaru = new Orochimaru();
+                int orochimaruHeight = orochimaru.getImage().getHeight()/2;
+                addObject(orochimaru, getWidth(), ground - orochimaruHeight);
+            }            
+            time = 0;
+            
             soltaLobos = aleatorio.nextInt((max - min) + 1) + min;
             
         }
@@ -79,13 +86,7 @@ public class NarutoWorld extends World
             }
         }                
         
-        if(time > 80)
-        {
-            Orochimaru orochimaru = new Orochimaru();
-            int orochimaruHeight = orochimaru.getImage().getHeight()/2;
-            addObject(orochimaru, getWidth(), ground - orochimaruHeight);
-            time = 0;
-        }
+       
         nivel ++;
         time++;        
     }
