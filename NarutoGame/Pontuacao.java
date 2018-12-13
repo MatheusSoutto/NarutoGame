@@ -37,10 +37,15 @@ public class Pontuacao extends Actor
     public void addScore()
     {
         //System.out.println(count%50);
-        if(count % 100 == 0){
-            inc += 1;
-        }        
-        points += inc;
+                
+        if(count % 5 == 0){
+            points += inc;            
+        }
+        if(count > 5){
+            if(count % 100 == 0){
+                inc += 1;
+            }
+        }
     }
     
     public int getScore()

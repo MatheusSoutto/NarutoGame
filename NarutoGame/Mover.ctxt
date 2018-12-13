@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=Mover
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Mover\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=void\ turn()
+comment1.text=\r\n\ Turn\ 90\ degrees\ to\ the\ right\ (clockwise).\r\n
+comment2.params=angle
+comment2.target=void\ turn(int)
+comment2.text=\r\n\ Turn\ 'angle'\ degrees\ towards\ the\ right\ (clockwise).\r\n
+comment3.params=
+comment3.target=void\ move()
+comment3.text=\r\n\ Move\ a\ bit\ forward\ in\ the\ current\ direction.\r\n
+comment4.params=distance
+comment4.target=void\ move(double)
+comment4.text=\r\n\ Move\ a\ specified\ distance\ forward\ in\ the\ current\ direction.\r\n
+comment5.params=
+comment5.target=boolean\ atWorldEdge()
+comment5.text=\r\n\ Test\ if\ we\ are\ close\ to\ one\ of\ the\ edges\ of\ the\ world.\ Return\ true\ is\ we\ are.\r\n
+numComments=6

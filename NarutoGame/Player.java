@@ -15,6 +15,8 @@ public abstract class Player extends Actor
     int BOOST_SPEED = -35;
     int jumpRatio = 0;
     int jumpLimit = 12;
+    int fireRatio = 0;
+    int fireLimit = 35;
     int groundHeight = getImage().getHeight()/2;
     int sideWidth = getImage().getWidth()/2;
     Integer step = 6;
@@ -35,7 +37,11 @@ public abstract class Player extends Actor
             dy += g;
             jump();
         }
-        
+        if (Greenfoot.isKeyDown("enter") && fireRatio == 0)
+        {
+            fire();
+            fireRatio++;
+        }
         // If user presses SPACE, Naruto jumps
         if(Greenfoot.isKeyDown("space") == true && getY() == MAXDY && jumpRatio == 0)
         {
@@ -60,6 +66,12 @@ public abstract class Player extends Actor
         if (jumpRatio == jumpLimit)
             jumpRatio = 0;
         
+         if (fireRatio >= 1)
+            fireRatio++;
+        
+        if (fireRatio == fireLimit)
+            fireRatio = 0;
+           
         NarutoWorld world = (NarutoWorld)getWorld();    
         world.pontua();
     }
@@ -131,6 +143,12 @@ public abstract class Player extends Actor
         }
         */
     }
-    
+    private void fire()
+    {
+        KunaiT kunai = new KunaiT();
+        getWorld().addObject(kunai, getX(), getY());
+        kunai.setRotation(getRotation());
+        kunai.move(40.0);
+    }
     public abstract void changeImg();
 }

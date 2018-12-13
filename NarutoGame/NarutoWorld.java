@@ -1,5 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.*;
+import java.util.Random;
 
 /**
  * Write a description of class NarutoWorld here.
@@ -10,12 +11,21 @@ import java.util.*;
 public class NarutoWorld extends World
 {
     int time = 0;
+    int nivel = 1;
+    int max = 35;
+    int min = 20;
+    int soltaLobos = 30;
     private int imageCount = 0;
     private Pontuacao pontos;
     private GreenfootImage bgImage = new GreenfootImage("images/world/background1.jpg");
     int ground = 320;
     
+    
     /**
+     * 
+     * 
+     * 
+     * 
      * Constructor for objects of class NarutoWorld.
      * 
      */
@@ -48,16 +58,28 @@ public class NarutoWorld extends World
     
     public void act() {
         imageCount -= 20; //(or any other value; small -> slow moving, big -> fast movement)
-        drawBackgroundImage();                
+        drawBackgroundImage(); 
         
-        if(time > 50)
+        if(time > soltaLobos)
         {
             Wolf wolf = new Wolf();
             int wolfHeight = wolf.getImage().getHeight()/2;
             addObject(wolf, getWidth(), ground - wolfHeight);
             time = 0;
+            Random aleatorio = new Random();
+            soltaLobos = aleatorio.nextInt((max - min) + 1) + min;
+            
         }
-        time++;
+        if(nivel > 200){
+            if(nivel % 100 == 0){
+                if(max > 25)
+                    max-=1;
+                if(min > 15)
+                    min-=1;                
+            }
+        }
+        nivel ++;
+        time++;        
     }
      
     public void drawBackgroundImage() {
